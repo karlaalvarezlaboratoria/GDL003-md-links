@@ -1,11 +1,14 @@
 const path = require('path');
 const fs = require('fs');
-//Misma función más corta (ternaria)
+const parametro = process.argv;
+
+//Misma función findMdExtension más corta (ternaria)
 //module.exports = filePath => path.extname(filePath) === '.md';
 
-//Funcion funcional, pasa los test.
+//Objeto que contiene mis funciones como propiedades.
 module.exports = {
-
+    
+//Función retorna true si el archivo tiene una extensión .md
   findMdExtension : (filePath) =>{
     if (path.extname(filePath) === '.md'){
       return true;
@@ -14,29 +17,14 @@ module.exports = {
       return false;
     }
   },
-
+  
+//Función lee archivo desde terminal.
   readFile : (filePath) =>{
     let show = fs.readFileSync(filePath);
     return show.toString();
   },
-  };
+};
+  
+  
 
 
-
-/*
-  /* saludo :  (name)=>{
-    return `Hola ${name}`;
-  }, */
-/*   mdLinks : () => {
-     return true;
-   },
-*/
-  /* mdLinks : () => {
-     const fs = ('fs');
-     let archivo = fs.readFileSync('/path/to/file') => {
-       return archivo
-   },
-
-});
-
-*/

@@ -1,41 +1,12 @@
+const mdLinks = require("./index.js");
+let filePath = process.argv[2];
 
-const fs = require('fs');
-const path = require('path');
-const parametro = process.argv;
-
-let filePath = "";
-
-const arrayLenght= () =>{
-  for (let i = 2; i < parametro.length; i++){
-    filePath += (parametro[i]);
-    return filePath;
-}
+let readMdFile = (filePath) =>{
+   if (mdLinks.findMdExtension) {
+    mdLinks.readFile; 
+    console.log(mdLinks.readFile(filePath));
+  } 
 };
-arrayLenght();
-
-let extension = path.extname(filePath);
-console.log(extension);
-
-let read = (filePath) =>{
-  let show = fs.readFileSync(filePath);
-  return show.toString();
-};
+readMdFile(filePath);
 
 
-
-console.log(read(filePath));
-
-
-
-/*
-let extension= (data) => {
-
-  if (path.extname(`"data"`) === '.md'){
-    console.log("true");
-  }
-  else {
-    console.log("false");
-  }
-};
-extension();
-*/
