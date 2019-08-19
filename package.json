@@ -1,4 +1,29 @@
 {
   "name": "md-links",
-  "version": "0.1.0"
+  "version": "0.1.0",
+  "devDependencies": {
+    "jest": "^24.8.0"
+  },
+  "description": "Intento de creación de librería para que un desarrollador pueda encontrar links funcionales y rotos dentro de un archivo .md",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {},
+  "scripts": {
+    "test": "jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/karlaalvarezlaboratoria/GDL003-md-links.git"
+  },
+  "keywords": [
+    "md-links-laboratoria"
+  ],
+  "author": "Karla Alvarez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/karlaalvarezlaboratoria/GDL003-md-links/issues"
+  },
+  "homepage": "https://github.com/karlaalvarezlaboratoria/GDL003-md-links#readme"
 }
