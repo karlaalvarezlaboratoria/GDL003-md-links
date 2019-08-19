@@ -5,7 +5,7 @@ const path = require('path');
 //Funcion funcional, pasa los test.
 module.exports = {
 
-  mdLinks : (filePath) =>{
+  findMdExtension : (filePath) =>{
     if (path.extname(filePath) === '.md'){
       return true;
     }
