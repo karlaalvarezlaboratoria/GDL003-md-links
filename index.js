@@ -1,4 +1,5 @@
 const path = require('path');
+const fs = require('fs');
 //Misma función más corta (ternaria)
 //module.exports = filePath => path.extname(filePath) === '.md';
 
@@ -12,8 +13,14 @@ module.exports = {
     else {
       return false;
     }
-  }
+  },
+
+  readFile : (filePath) =>{
+    let show = fs.readFileSync(filePath);
+    return show.toString();
+  },
   };
+
 
 
 /*
