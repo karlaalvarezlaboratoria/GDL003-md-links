@@ -16,6 +16,16 @@ describe('mdLinks', () => {
   it('mdLinks contains findLinks function', () => {
     expect('findLinks' in mdLinks).toBe(true);
   });
+  
+  it('mdLinks contains readDirectory function', () => {
+    expect('readDirectory' in mdLinks).toBe(true);
+  });
+});
+
+describe('readDirectory', () => {
+  it ('readDirectory it should to be a function', () =>{
+    expect(typeof mdLinks.readDirectory).toBe('function');
+  });
 });
 
 describe('findMdExtension', () => {

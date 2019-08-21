@@ -1,5 +1,6 @@
 const path = require('path');
 const fs = require('fs');
+const directory = process.cwd();
 const parametro = process.argv;
 
 //Misma función findMdExtension más corta (ternaria)
@@ -7,6 +8,14 @@ const parametro = process.argv;
 
 //Objeto que contiene mis funciones como propiedades.
 module.exports = {
+  
+  readDirectory : (directory) => {
+  fs.readdir(directory, 'utf8', ((err, files) => {
+    if(err) throw err;
+    console.log(files);
+    console.log(directory);
+  }))
+},
     
 //Función retorna true si el archivo tiene una extensión .md
   findMdExtension : (filePath) =>{
@@ -23,6 +32,15 @@ module.exports = {
     let fileContent = fs.readFileSync(filePath).toString();
     return fileContent;
   },
+
+//Función asyncrona para leer archivos, test arroja :  Cannot log after tests are done. Did you forget to wait for something async in your test?
+  // readFile : (filePath) =>{
+  //   fs.readFile(filePath, 'utf8', ((err, fileContent) => {
+  //     if(err) throw err;
+  //     console.log((fileContent).toString());
+  //     return fileContent;
+  //   }) )  
+  // },
  
 //Función encuentra links y devuelve un array con 0-link entre paréntesis; 1-index; 2-input con texto; 3- groups undefined. 
   findLinks : (fileContent) => {
