@@ -1,7 +1,7 @@
 const path = require('path');
 const fs = require('fs');
 const directory = process.cwd();
-const parametro = process.argv;
+const filePath = process.argv[2];
 
 //Misma función findMdExtension más corta (ternaria)
 //module.exports = filePath => path.extname(filePath) === '.md';
@@ -44,9 +44,9 @@ module.exports = {
  
 //Función encuentra links y devuelve un array con 0-link entre paréntesis; 1-index; 2-input con texto; 3- groups undefined. 
   findLinks : (fileContent) => {
-    let linkEquivalent = /\(\S+\)/gim; 
-    let myArray = linkEquivalent.exec(fileContent);
-    console.log(fileContent);
+    let linkEquivalent = new RegExp(/https?:\S+\w/g); 
+    let myArray = fileContent.match(linkEquivalent);
+    console.log(myArray.length);
     console.log(myArray);
       return myArray;
     }, 

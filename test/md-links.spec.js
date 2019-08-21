@@ -61,7 +61,7 @@ describe('findLinks', () => {
   });
   
   it('findLinks find a links into a .md file', () => {
-    expect(mdLinks.findLinks(`Leo correctamente un archivo [Markdown](https://es.wikipedia.org/wiki/Markdown)`)[0]).toBe("(https://es.wikipedia.org/wiki/Markdown)");
+    expect(mdLinks.findLinks(`Leo correctamente un archivo [Markdown](https://es.wikipedia.org/wiki/Markdown)`)[0]).toBe("https://es.wikipedia.org/wiki/Markdown");
   });
 });
 
