@@ -12,6 +12,10 @@ describe('mdLinks', () => {
   it('mdLinks contains readFile function', () => {
     expect('readFile' in mdLinks).toBe(true);
   });
+  
+  it('mdLinks contains findLinks function', () => {
+    expect('findLinks' in mdLinks).toBe(true);
+  });
 });
 
 describe('findMdExtension', () => {
@@ -36,7 +40,18 @@ describe('readFile', () => {
   });
 
   it('readFile it should to read a file', () => {
-    expect(mdLinks.readFile('test/readmeTest.md')).toEqual('Leo correctamente un archivo');
+    expect(mdLinks.readFile('test/readmeTest.md')).toEqual('Leo correctamente un archivo [Markdown](https://es.wikipedia.org/wiki/Markdown)');
   });
-
 });
+
+describe('findLinks', () => {
+
+  it('findLinks it should to be a function', () => {
+    expect(typeof mdLinks.findLinks).toBe('function');
+  });
+  
+  it('findLinks find a links into a .md file', () => {
+    expect(mdLinks.findLinks(`Leo correctamente un archivo [Markdown](https://es.wikipedia.org/wiki/Markdown)`)[0]).toBe("(https://es.wikipedia.org/wiki/Markdown)");
+  });
+});
+
