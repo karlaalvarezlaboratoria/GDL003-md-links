@@ -8,13 +8,12 @@ const filePath = process.argv[2];
 
 //Objeto que contiene mis funciones como propiedades.
 module.exports = {
-  
+
   readDirectory : (directory) => {
-  fs.readdir(directory, 'utf8', ((err, files) => {
-    if(err) throw err;
+    let files = fs.readdirSync(directory); 
     console.log(files);
+    return files;
     console.log(directory);
-  }))
 },
     
 //Función retorna true si el archivo tiene una extensión .md
@@ -32,15 +31,6 @@ module.exports = {
     let fileContent = fs.readFileSync(filePath).toString();
     return fileContent;
   },
-
-//Función asyncrona para leer archivos, test arroja :  Cannot log after tests are done. Did you forget to wait for something async in your test?
-  // readFile : (filePath) =>{
-  //   fs.readFile(filePath, 'utf8', ((err, fileContent) => {
-  //     if(err) throw err;
-  //     console.log((fileContent).toString());
-  //     return fileContent;
-  //   }) )  
-  // },
  
 //Función encuentra links y devuelve un array con 0-link entre paréntesis; 1-index; 2-input con texto; 3- groups undefined. 
   findLinks : (fileContent) => {
@@ -52,24 +42,6 @@ module.exports = {
     }, 
   };
 
-//Función con matchAll no la identifica como función.
-// Antes retornaba un array vacío.  
-/*
-  findLinks : (fileContent) => {
-    let linkEquivalent = RegExp("/\[(\S+)\]\((\S+)\)/gim");
-    let findedLinks = fileContent.matchAll(linkEquivalent);
-    let links = Array.from(findedLinks, match => { 
-      return {"name": match[1], "link": match[2]}
-    });
-    console.log(fileContent);
-    console.log(linkEquivalent);
-    console.log(findedLinks);
-    console.log(links);
-    
-    return findedLinks;
-    console.log(findLinks(fileContent));
-  },  
-};
 
-*/
+
 

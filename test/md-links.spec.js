@@ -26,6 +26,11 @@ describe('readDirectory', () => {
   it ('readDirectory it should to be a function', () =>{
     expect(typeof mdLinks.readDirectory).toBe('function');
   });
+  
+  it ('readDirectory contains a x file', () =>{
+    expect(mdLinks.readDirectory('/home/laboratoria-185/Documentos/LaboratoriaKEAC/GDL003-md-links')[3])
+    .toBe('.gitignore');
+  });
 });
 
 describe('findMdExtension', () => {

@@ -7,6 +7,8 @@ let readMdFile = () =>{
    if (mdLinks.findMdExtension) { 
     mdLinks.findLinks(fileContent);   
   } 
+  //En efecto si no es .md no ejecuta correctamente, pero
+  //tampoco muestra console.log
    else {
      console.log("La ruta es incorrecta o no es un archivo .md");
    }
