@@ -24,18 +24,18 @@ describe('readDirectory', () => {
   });
 });
 
-describe('findMdExtension', () => {
+describe('checkIfMD', () => {
 
-  it('findMdExtension it should to be a function', () => {
-    expect(typeof mdLinks.findMdExtension).toBe('function');
+  it('checkIfMD it should to be a function', () => {
+    expect(typeof mdLinks.checkIfMD).toBe('function');
   });
 
   it('should return true for a valid .md file', () => {
-    expect( mdLinks.findMdExtension('../README.md')).toBe(true);
+    expect( mdLinks.checkIfMD('../README.md')).toBe(true);
   });
 
   it('should return true for a valid .md file', () => {
-    expect( mdLinks.findMdExtension('../README.js')).toBe(false);
+    expect( mdLinks.checkIfMD('../README.js')).toBe(false);
   });
 });
 

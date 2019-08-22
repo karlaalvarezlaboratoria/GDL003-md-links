@@ -2,44 +2,30 @@ const path = require('path');
 const fs = require('fs');
 const directory = process.cwd();
 const filePath = process.argv[2];
-
-//Misma función findMdExtension más corta (ternaria)
-//module.exports = filePath => path.extname(filePath) === '.md';
+const url = require('url');
 
 //Objeto que contiene mis funciones como propiedades.
 module.exports = {
-
-  readDirectory : (directory) => {
-    let files = fs.readdirSync(directory); 
-    console.log(files);
-    return files;
-    console.log(directory);
-},
-    
+  readDirectory : (directory) => fs.readdirSync(directory), 
+  
 //Función retorna true si el archivo tiene una extensión .md
-  findMdExtension : (filePath) =>{
-    if (path.extname(filePath) === '.md'){
-      return true;
-    }
-    else {
-      return false;
-    }
-  },
+  checkIfMD : filePath => path.extname(filePath) === '.md',
   
 //Función lee archivo desde terminal.
-  readFile : (filePath) =>{
-    let fileContent = fs.readFileSync(filePath).toString();
-    return fileContent;
-  },
+  readFile : (filePath) => fs.readFileSync(filePath).toString(),
  
-//Función encuentra links y devuelve un array con 0-link entre paréntesis; 1-index; 2-input con texto; 3- groups undefined. 
+//Función encuentra links y devuelve un array con todos los links 
   findLinks : (fileContent) => {
-    let linkEquivalent = new RegExp(/https?:\S+\w/g); 
-    let myArray = fileContent.match(linkEquivalent);
-    console.log(myArray.length);
-    console.log(myArray);
-      return myArray;
+    const linkEquivalent = new RegExp(/https?:\S+\w/g); 
+    const linksArray = fileContent.match(linkEquivalent);
+    console.log(linksArray.length);
+    console.log(linksArray);
+      return linksArray;
     }, 
+    
+    validateLinks : (myArray) => {
+      console.log("Esto validará links");
+    },
   };
 
 

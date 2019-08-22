@@ -4,7 +4,7 @@ let filePath = process.argv[2];
 let fileContent = mdLinks.readFile(filePath);
 
 let readMdFile = () =>{
-   if (mdLinks.findMdExtension) { 
+   if (mdLinks.checkIfMD) { 
     mdLinks.findLinks(fileContent);   
   } 
   //En efecto si no es .md no ejecuta correctamente, pero
