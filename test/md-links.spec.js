@@ -1,25 +1,16 @@
 const mdLinks = require("../index.js");
 
 describe('mdLinks', () => {
-  it('mdLinks it should to be an object', () => {
+  it('mdLinks should be an object', () => {
     expect(typeof mdLinks).toBe('object');
   });
-
-  it('mdLinks contains findMdExtension function', () => {
-    expect('findMdExtension' in mdLinks).toBe(true);
-  });
-
-  it('mdLinks contains readFile function', () => {
-    expect('readFile' in mdLinks).toBe(true);
-  });
   
-  it('mdLinks contains findLinks function', () => {
-    expect('findLinks' in mdLinks).toBe(true);
-  });
-  
-  it('mdLinks contains readDirectory function', () => {
-    expect('readDirectory' in mdLinks).toBe(true);
-  });
+  it('mdLinks should contain readDirectory, findMdExtension, readFile, findLinks, validateLinks', () => {
+    const objKeys = Object.keys(mdLinks);
+    objKeys.forEach((el) => {
+        expect(el in mdLinks).toBe(true)
+    })
+  })  
 });
 
 describe('readDirectory', () => {
