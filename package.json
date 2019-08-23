@@ -9,7 +9,10 @@
   "directories": {
     "test": "test"
   },
-  "dependencies": {},
+  "dependencies": {
+    "node-fetch": "^2.6.0",
+    "xmlhttprequest": "^1.8.0"
+  },
   "scripts": {
     "test": "jest --coverage"
   },

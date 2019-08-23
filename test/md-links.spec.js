@@ -26,33 +26,33 @@ describe('readDirectory', () => {
 
 describe('checkIfMD', () => {
 
-  it('checkIfMD it should to be a function', () => {
+  it('checkIfMD should be a function', () => {
     expect(typeof mdLinks.checkIfMD).toBe('function');
   });
 
-  it('should return true for a valid .md file', () => {
+  it('checkIfMD should return true for a valid .md file', () => {
     expect( mdLinks.checkIfMD('../README.md')).toBe(true);
   });
 
-  it('should return true for a valid .md file', () => {
+  it('checkIfMD should return false for a no valid .md file', () => {
     expect( mdLinks.checkIfMD('../README.js')).toBe(false);
   });
 });
 
 describe('readFile', () => {
 
-  it('readFile it should to be a function', () => {
+  it('readFile should be a function', () => {
     expect(typeof mdLinks.readFile).toBe('function');
   });
 
-  it('readFile it should to read a file', () => {
+  it('readFile should read a file', () => {
     expect(mdLinks.readFile('test/readmeTest.md')).toEqual('Leo correctamente un archivo [Markdown](https://es.wikipedia.org/wiki/Markdown)');
   });
 });
 
 describe('findLinks', () => {
-
-  it('findLinks it should to be a function', () => {
+  
+  it('findLinks should be a function', () => {
     expect(typeof mdLinks.findLinks).toBe('function');
   });
   
@@ -61,3 +61,16 @@ describe('findLinks', () => {
   });
 });
 
+describe('validateLinks', () => {
+  
+  it('validateLinks should be a function', () => {
+    expect(typeof mdLinks.validateLinks).toBe('function');
+  })
+  
+  it('validateLinks validate a link', () => {
+      mdLinks.validateLinks('https://es.wikipedia.org/wiki/Markdown')
+      .then((response) => {
+        expect(response.status).toBe(200);
+      });
+})
+})
