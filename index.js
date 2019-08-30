@@ -33,7 +33,7 @@ module.exports = {
               resolve(response);
           }).catch((err) => {
           //  console.log(err.message)
-            reject(err)
+          //  reject(err)
           })
         })
       },      
