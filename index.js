@@ -4,6 +4,8 @@ const directory = process.cwd();
 const filePath = process.argv[2];
 const url = require('url');
 const fetch = require ( 'node-fetch' ) ; 
+const marked = require ('marked');
+let linksArray = [];
 
 //Objeto que contiene mis funciones como propiedades.
 module.exports = {
@@ -18,11 +20,40 @@ module.exports = {
   readFile : (filePath) => fs.readFileSync(filePath).toString(),
  
 //Función encuentra links y devuelve un array con todos los links 
-  findLinks : (fileContent) => {
-    const linkEquivalent = new RegExp(/https?:\S+\w/g); 
-    const linksArray = fileContent.match(linkEquivalent);
-      return linksArray;
-    }, 
+     findLinks: (fileContent) => {
+        const pony = new marked.Renderer();
+        pony.link = (href, title, text) =>{
+        linksArray.push({
+            file : directory+"/"+filePath ,
+            href : href ,
+            text: text                
+          });
+        }
+          marked(fileContent, { renderer: pony});
+          return linksArray;   
+        },
+       
+         
+       
+           
+  // findLinks : (fileContent) => {
+  //   const textEquivalent =(/\[(.+)\]/gim);
+  //   const linkEquivalent =(/https?:\S+\w/g); 
+  //   const textFind = fileContent.match(textEquivalent);
+  //   const linksFind = fileContent.match(linkEquivalent);
+  //   //console.log(textFind);
+  //   //console.log(linksFind);
+  //    const linksArray = Array.concat(fileContent, match => {
+  //      //console.log(linksFind);
+  //     // console.log(match[10]);
+  //      return { "file": directory+`/`+filePath, "text": textFind, "href": linksFind}
+  // 
+  //    })
+  // 
+  // 
+  //     console.log(linksArray);  
+  //    return linksArray;
+  //   }, 
 //En algún punto esto validará links    
     validateLinks : (linksArray) => {
       

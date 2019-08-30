@@ -57,7 +57,10 @@ describe('findLinks', () => {
   });
   
   it('findLinks find a links into a .md file', () => {
-    expect(mdLinks.findLinks(`Leo correctamente un archivo [Markdown](https://es.wikipedia.org/wiki/Markdown)`)[0]).toBe("https://es.wikipedia.org/wiki/Markdown");
+    expect(mdLinks.findLinks(`Leo correctamente un archivo [Markdown](https://es.wikipedia.org/wiki/Markdown)`)[0]).toEqual({ file:
+         '/home/laboratoria-185/Documentos/LaboratoriaKEAC/GDL003-md-links/--coverage',
+        href: 'https://es.wikipedia.org/wiki/Markdown',
+        text: 'Markdown' });
   });
 });
 
